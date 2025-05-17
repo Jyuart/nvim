@@ -51,4 +51,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- [[ My own keymaps ]]
+vim.keymap.set('n', '<leader>b', '<cmd>:Ex<CR>', { desc = 'Back to explorer' })
+
 -- vim: ts=2 sts=2 sw=2 et
