@@ -71,4 +71,10 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Indents
+vim.opt.expandtab = true -- Use spaces instead of tabs (useful for consistency)
+vim.opt.tabstop = 4 -- Make tab be displayed as 4 spaces
+vim.opt.shiftwidth = 4 -- The number of spaces when indent happens automatically
+vim.opt.softtabstop = 4 -- The number of spaces entered when pressing Tab
+
 -- vim: ts=2 sts=2 sw=2 et
