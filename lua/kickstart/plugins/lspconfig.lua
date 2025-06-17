@@ -207,11 +207,15 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local svelte_cap = vim.tbl_deep_extend('force', {}, capabilities)
+      svelte_cap.workspace = { didChangeWatchedFiles = false }
       local servers = {
         -- clangd = {},
         gopls = {},
         pyright = {},
-        svelte = {},
+        svelte = {
+          capabilities = svelte_cap,
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -271,6 +275,9 @@ return {
           end,
         },
       }
+      for server_name, config in pairs(servers) do
+        vim.lsp.config(server_name, config)
+      end
     end,
   },
 }
